@@ -18,13 +18,15 @@ function placeorder() {
 
   $.ajax({
     type: "POST",
-    url: "/placeorder",
+    url: "http://localhost:8080/Donchaha/placeorder",
+    dataType: 'JSON',
     data: {
-      orders: orders,
+      orders: JSON.stringify(orders),
     },
     success: function (data) {
-      if (data === "success") {
-        alert("Your order placed");
+      if (data) {
+        alert(data);
+        console.log(data);
       } else {
         alert("Something went wrong, please try again later");
       }

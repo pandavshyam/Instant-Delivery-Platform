@@ -6,6 +6,7 @@ import static com.mongodb.client.model.Filters.eq;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,11 +33,15 @@ public class login extends HttpServlet {
             
             // Querying the collection
             Document doc = collection.find(and(eq("email",email),eq("password",password))).first();
+            
             if (!doc.equals(null)){
-                out.println(doc);
-            } else {
-                out.println("Not found");
+                
+                // Creating cookies
+                Cookie ck = new Cookie("em",email);
+                response.addCookie(ck);
+                response.sendRedirect("user.jsp?result=success");
             }
+            response.sendRedirect("index.jsp.jsp?result=false");
             // Redirecting user
 //            response.sendRedirect("index.jsp?result=success");
             
