@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="css/profile.css" />
+    <link rel="stylesheet" href="css/bg.css" />
+  </head>
+  <body>
+    <div class="login-page">
+      <div class="form">
+        <h2 style="color: green">Profile Details</h2>
+        <input type="text" placeholder="Name" id="name" />
+        <input type="text" placeholder="Email Address" id="email" />
+        <input type="text" placeholder="Mobile Number" id="mobile" />
+        <textarea placeholder="Address" id="addr"></textarea>
+        <button onclick="saveInfo()">Save</button>
+        <p><a href="/user.html">Go back</a></p>
+      </div>
+    </div>
+    <img src="https://wallpaperaccess.com/full/1891213.jpg" id="bg" alt="" />
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/profile.js"></script>
+    <script src="ajax/userprofile.js"></script>
+  </body>
+</html>
