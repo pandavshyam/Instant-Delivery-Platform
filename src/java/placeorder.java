@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import jdk.nashorn.internal.parser.JSONParser;
 import org.bson.Document;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class placeorder extends HttpServlet {
@@ -40,17 +41,28 @@ public class placeorder extends HttpServlet {
             String name = (String)doc.get("name");
             String mobile = (String)doc.get("mobile");
             String address = (String)doc.get("address");
-            
-            // Getting data from frontend
-            String orders = request.getParameter("orders");
-            
-//            JSONParser parser = new JSONParser();
-//            JSONObject json = (JSONObject) parser.parse(orders);
 
             // Creating json object
-            JSONObject obj = new JSONObject();
+//            JSONObject obj = new JSONObject();
+//            obj.put("orders",request.getParameter("orders"));
+//            String order = request.getParameter("orders");
+//            JSONArray array = new JSONArray(order);
+//            JSONObject json = new JSONObject(order);
+            BasicDBObject json =(BasicDBObject) JSON.parse(request.getParameter("orders"));
+            
+            // Inserting into the database
+            MongoCollection<Document> orderCollection = dbs.getCollection("orders");
+            
+            Document orderDoc = new Document("name", name)
+                    .append("email", email)
+                    .append("mobile", mobile)
+                    .append("address",address)
+                    .append("orders", json)
+                    .append("status", false);
+            
+            orderCollection.insertOne(orderDoc);
 
-            out.print(obj);
+//            out.print();
             out.close();
         } catch (Exception e){
             e.printStackTrace();
