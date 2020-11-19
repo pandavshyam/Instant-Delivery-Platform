@@ -1,8 +1,6 @@
-import com.mongodb.BasicDBObject;
-import com.mongodb.DBCursor;
+
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import static com.mongodb.client.model.Filters.eq;
 import com.mongodb.util.JSON;
@@ -13,10 +11,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import jdk.nashorn.internal.parser.JSONParser;
 import org.bson.Document;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class placeorder extends HttpServlet {
     @Override
@@ -42,27 +37,23 @@ public class placeorder extends HttpServlet {
             String mobile = (String)doc.get("mobile");
             String address = (String)doc.get("address");
 
-            // Creating json object
-//            JSONObject obj = new JSONObject();
-//            obj.put("orders",request.getParameter("orders"));
-//            String order = request.getParameter("orders");
-//            JSONArray array = new JSONArray(order);
-//            JSONObject json = new JSONObject(order);
-            BasicDBObject json =(BasicDBObject) JSON.parse(request.getParameter("orders"));
+            // Getting input data
+            String orders = request.getParameter("orders");
             
             // Inserting into the database
             MongoCollection<Document> orderCollection = dbs.getCollection("orders");
             
+            // Creating document that need to be inserted into the database
             Document orderDoc = new Document("name", name)
                     .append("email", email)
                     .append("mobile", mobile)
                     .append("address",address)
-                    .append("orders", json)
+                    .append("orders", JSON.parse(orders))
                     .append("status", false);
             
             orderCollection.insertOne(orderDoc);
 
-//            out.print();
+            
             out.close();
         } catch (Exception e){
             e.printStackTrace();
