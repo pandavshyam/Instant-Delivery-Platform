@@ -22,10 +22,10 @@
       </div>
 
       <div class="nav-links">
-        <a href="/user.html">Home</a>
-        <a href="/userprofile.html">Profile</a>
-        <a href="/userhistory.html">Order History</a>
-        <a href="/logout.html">Logout</a>
+        <a href="user.html">Home</a>
+        <a href="userprofile.html">Profile</a>
+        <a href="userhistory.jsp">Order History</a>
+        <a href="logout.html">Logout</a>
       </div>
     </div>
     <div class="container">

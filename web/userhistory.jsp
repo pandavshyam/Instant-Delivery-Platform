@@ -22,10 +22,10 @@
       </div>
 
       <div class="nav-links">
-        <a href="/user.html">Home</a>
-        <a href="/userprofile.html">Profile</a>
-        <a href="/userhistory.html">Order History</a>
-        <a href="/logout.html">Logout</a>
+        <a href="user.jsp">Home</a>
+        <a href="userprofile.html">Profile</a>
+        <a href="userhistory.jsp">Order History</a>
+        <a href="logout.html">Logout</a>
       </div>
     </div>
     <div class="container">
@@ -36,10 +36,8 @@
           <thead>
             <tr class="head">
               <th scope="col">Date</th>
-              <th scope="col">Time</th>
               <th scope="col">Address</th>
               <th scope="col">Snack</th>
-              <th scope="col">Shop Name</th>
               <th scope="col">Quantity</th>
             </tr>
           </thead>
@@ -48,7 +46,7 @@
       </div>
     </div>
     <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/user.js"></script>
+    <!--<script src="js/user.js"></script>-->
     <script src="ajax/userhistory.js"></script>
   </body>
 </html>

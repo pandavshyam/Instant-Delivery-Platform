@@ -6,6 +6,8 @@ import static com.mongodb.client.model.Filters.eq;
 import com.mongodb.util.JSON;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -49,11 +51,14 @@ public class placeorder extends HttpServlet {
                     .append("mobile", mobile)
                     .append("address",address)
                     .append("orders", JSON.parse(orders))
+                    .append("date", new SimpleDateFormat("MM/dd/yyyy").format(Calendar.getInstance().getTime()))
                     .append("status", false);
             
             orderCollection.insertOne(orderDoc);
-
             
+            String responseToSend = "{\"result\" : \"Order Placed!!\"}";
+
+            out.print(JSON.parse(responseToSend));
             out.close();
         } catch (Exception e){
             e.printStackTrace();

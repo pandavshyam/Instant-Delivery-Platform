@@ -16,6 +16,10 @@
         <servlet-name>placeorder</servlet-name>
         <servlet-class>placeorder</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>userhistory</servlet-name>
+        <servlet-class>userhistory</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Signup</servlet-name>
         <url-pattern>/Signup</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>placeorder</servlet-name>
         <url-pattern>/placeorder</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>userhistory</servlet-name>
+        <url-pattern>/userhistory</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
