@@ -1,4 +1,6 @@
+import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
@@ -35,23 +37,25 @@ public class userhistory extends HttpServlet {
             // Getting cokkies data
             Cookie ck[] = request.getCookies();
             String email = ck[1].getValue();
-
-            // Getting all user data with the help of cookies
-            MongoCursor<Document> cursor = orderCollection.find(eq("email",email)).iterator();
-            JSONArray array = new JSONArray();
-            JSONObject obj = new JSONObject();
             
-            try {
-                while (cursor.hasNext()) {
-                    out.print(cursor.next().toJson());
-                }
-            } finally {
-                cursor.close();
-            }
+            // Getting all user data with the help of cookies
+//            MongoCursor<Document> cursor = orderCollection.find(eq("email",email)).iterator();
+//            JSONArray array = new JSONArray();
+//            JSONObject obj = new JSONObject();
+            BasicDBObject whereQuery = new BasicDBObject();
+            whereQuery.put("email", email);
+            FindIterable cursor = orderCollection.find(whereQuery);
+//            try {
+//                while (cursor.hasNext()) {
+//                    out.print(cursor.next().toJson());
+//                }
+//            } finally {
+//                cursor.close();
+//            }
 //            String responseToSend = "{\"result\" : \"Order Placed!!\"}";
-//
+//  
 //            out.print(JSON.parse(responseToSend));
-            out.print(obj);
+            out.print("Sql query is?= " + whereQuery.toString());
             out.close();
         } catch (Exception e){
             e.printStackTrace();
