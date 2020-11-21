@@ -31,6 +31,10 @@ public class login extends HttpServlet {
             String password = request.getParameter("password");
             String email = request.getParameter("email");
             
+            if (email.equals("boy") && password.equals("boy")){
+                response.sendRedirect("boy.html");
+            }
+            
             // Querying the collection
             Document doc = collection.find(and(eq("email",email),eq("password",password))).first();
             
@@ -42,8 +46,6 @@ public class login extends HttpServlet {
                 response.sendRedirect("user.jsp?result=success");
             }
             response.sendRedirect("index.jsp.jsp?result=false");
-            // Redirecting user
-//            response.sendRedirect("index.jsp?result=success");
             
         } catch (Exception e){
             e.printStackTrace();

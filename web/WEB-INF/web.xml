@@ -20,6 +20,22 @@
         <servlet-name>userhistory</servlet-name>
         <servlet-class>userhistory</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>boyindex</servlet-name>
+        <servlet-class>boyindex</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>admin</servlet-name>
+        <servlet-class>admin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>adminhistory</servlet-name>
+        <servlet-class>adminhistory</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>boyhistory</servlet-name>
+        <servlet-class>boyhistory</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Signup</servlet-name>
         <url-pattern>/Signup</url-pattern>
@@ -39,6 +55,22 @@
     <servlet-mapping>
         <servlet-name>userhistory</servlet-name>
         <url-pattern>/userhistory</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>boyindex</servlet-name>
+        <url-pattern>/boyindex</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>admin</servlet-name>
+        <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>adminhistory</servlet-name>
+        <url-pattern>/adminhistory</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>boyhistory</servlet-name>
+        <url-pattern>/boyhistory</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
