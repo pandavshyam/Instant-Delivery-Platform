@@ -5,6 +5,7 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import java.util.ArrayList;
+import java.util.Arrays;
 import org.bson.Document;
 
 public class test {
@@ -19,10 +20,22 @@ public class test {
         whereQuery.put("email", email);
         
         FindIterable cursor = orderCollection.find(whereQuery);
-
-        for(Document doc : cursor) {
+        
+        ArrayList orders = new ArrayList < > ();
+        
+        for (Document doc : cursor) { 
             ArrayList users = new ArrayList < > (doc.values());
-            System.out.printf("%s: %s%n", users.get(1), users.get(2));            
+            ArrayList s = (ArrayList) users.get(5);
+            for (int i = 0; i < s.size(); i++){
+                Document particularOrder = new Document();
+                particularOrder = (Document) s.get(i);
+                orders.add(new Document("date",users.get(6))
+                .append("addr", users.get(4))
+                .append("snack",particularOrder.get("snack"))
+                .append("quantity",particularOrder.get("quantity"))
+                );
+            }
         }
+        System.out.println(orders.toString());
     }
 }
