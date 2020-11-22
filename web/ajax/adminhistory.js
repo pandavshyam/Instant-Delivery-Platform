@@ -24,30 +24,3 @@ $.ajax({
   },
 });
 
-//var orders = [
-//  {
-//    date: "2/2/2020",
-//    snack: "Tea",
-//    quantity: "2",
-//    name: "Dhanesh Pawar",
-//    addr: "Classroom 302",
-//  },
-//  {
-//    date: "3/2/2020",
-//    time: "3 PM",
-//    snack: "Pohe",
-//    shop: "Umiya Pohe",
-//    quantity: "2",
-//    name: "Dhanesh Pawar",
-//    addr: "Classroom 303",
-//  },
-//  {
-//    date: "4/2/2020",
-//    time: "4 PM",
-//    snack: "Cold Coffee",
-//    shop: "Cafe Creme",
-//    quantity: "2",
-//    name: "Dhanesh Pawar",
-//    addr: "Classroom 304",
-//  },
-//];

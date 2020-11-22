@@ -25,7 +25,7 @@
         <a href="user.jsp">Home</a>
         <a href="userprofile.html">Profile</a>
         <a href="userhistory.jsp">Order History</a>
-        <a href="logout.html">Logout</a>
+        <a href="logout">Logout</a>
       </div>
     </div>
     <div class="container">

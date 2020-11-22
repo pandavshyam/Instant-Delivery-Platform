@@ -35,9 +35,20 @@ public class userhistory extends HttpServlet {
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
         
-            // Getting cokkies data
+            // Getting cookie data
+            Cookie cookie = null;
             Cookie ck[] = request.getCookies();
-            String email = ck[1].getValue();
+            String email = null;
+            
+            // Getting particular cookie only
+            if( ck != null ) {
+                for (int i = 0; i < ck.length; i++) {
+                   cookie = ck[i];
+                   if (cookie.getName().equals("em")){
+                       email = cookie.getValue();
+                   }
+                }
+            }
             
             BasicDBObject whereQuery = new BasicDBObject();
             whereQuery.put("email", email);

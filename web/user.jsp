@@ -1,3 +1,20 @@
+<%
+    Cookie cookie = null;
+    Cookie[] cookies = null;
+
+    // Get an array of Cookies associated with the this domain
+    cookies = request.getCookies();
+
+    if( cookies != null ) {
+       for (int i = 0; i < cookies.length; i++) {
+          cookie = cookies[i];
+          if (cookie.getName().equals("em") && cookie.getValue().equals("")){
+              response.setStatus(response.SC_MOVED_TEMPORARILY);
+              response.setHeader("Location", "index.jsp");
+          }
+       }
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -25,7 +42,7 @@
         <a href="user.html">Home</a>
         <a href="userprofile.html">Profile</a>
         <a href="userhistory.jsp">Order History</a>
-        <a href="logout.html">Logout</a>
+        <a href="logout">Logout</a>
       </div>
     </div>
     <div class="container">

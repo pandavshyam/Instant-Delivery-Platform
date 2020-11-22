@@ -1,4 +1,3 @@
-
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
@@ -29,9 +28,19 @@ public class placeorder extends HttpServlet {
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
         
-            // Getting cokkies data
+            // Getting cookie data
+            Cookie cookie = null;
             Cookie ck[] = request.getCookies();
-            String email = ck[1].getValue();
+            String email = null;
+            
+            if( ck != null ) {
+                for (int i = 0; i < ck.length; i++) {
+                   cookie = ck[i];
+                   if (cookie.getName().equals("em")){
+                       email = cookie.getValue();
+                   }
+                }
+            }
 
             // Getting all user data with the help of cookies
             Document doc = collection.find(eq("email",email)).first();

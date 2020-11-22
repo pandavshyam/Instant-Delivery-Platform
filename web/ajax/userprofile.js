@@ -1,45 +1,42 @@
 $.ajax({
   type: "get",
-  url: "/userprofile",
+  datatype: 'JSON',
+  url: "http://localhost:8080/Donchaha/profile",
   success: function (data) {
-    var profile = data;
+    $("#name").val(data[1]);
+    $("#email").val(data[3]);
+    $("#mobile").val(data[4]);
+    $("#addr").val(data[5]);
   },
 });
 
-var profile = {
-  name: "Dhanesh Pawar",
-  email: "dhaneshpawar.me@gmail.com",
-  mobile: "90289619149",
-  addr: "Classroom 4",
-};
-
-$("#name").val(profile.name);
-$("#email").val(profile.email);
-$("#mobile").val(profile.mobile);
-$("#addr").val(profile.addr);
-
 function saveInfo() {
-  alert("you cliked on it");
   var profile = {
     name: "",
     email: "",
     mobile: "",
-    addr: "",
+    address: "",
   };
 
   profile.name = $("#name").val();
   profile.email = $("#email").val();
   profile.mobile = $("#mobile").val();
-  profile.addr = $("#addr").val();
+  profile.address = $("#addr").val();
 
-  console.log("to send profile ", profile);
-
+//  console.log(JSON.stringify(profile));
+   
   $.ajax({
     type: "post",
-    url: "/setprofile",
-    data: profile,
+    datatype:'JSON',
+    url: "http://localhost:8080/Donchaha/profile",
+    data: {"email" : profile.email,
+            "name": profile.name,
+            "mobile": profile.mobile,
+            "address": profile.address
+            },
     success: function (data) {
       var profile = data;
+      alert("Profile Updated");
     },
   });
 }

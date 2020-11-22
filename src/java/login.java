@@ -50,7 +50,7 @@ public class login extends HttpServlet {
                 response.addCookie(ck);
                 response.sendRedirect("user.jsp?result=success");
             }
-            response.sendRedirect("index.jsp.jsp?result=false");
+            response.sendRedirect("index.jsp?result=false");
             
         } catch (Exception e){
             e.printStackTrace();
