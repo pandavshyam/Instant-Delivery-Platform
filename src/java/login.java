@@ -31,10 +31,15 @@ public class login extends HttpServlet {
             String password = request.getParameter("password");
             String email = request.getParameter("email");
             
+            // For Delivery Boy login
             if (email.equals("boy") && password.equals("boy")){
                 response.sendRedirect("boy.html");
             }
             
+            // For Admin login
+            if (email.equals("admin") && password.equals("admin")){
+                response.sendRedirect("boy.html");
+            }
             // Querying the collection
             Document doc = collection.find(and(eq("email",email),eq("password",password))).first();
             
